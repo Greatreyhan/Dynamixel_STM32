@@ -1,0 +1,26 @@
+--cpu=Cortex-M4.fp.sp
+"dynamixel_no_ttl\startup_stm32f407xx.o"
+"dynamixel_no_ttl\main.o"
+"dynamixel_no_ttl\stm32f4xx_it.o"
+"dynamixel_no_ttl\stm32f4xx_hal_msp.o"
+"dynamixel_no_ttl\stm32f4xx_hal_tim.o"
+"dynamixel_no_ttl\stm32f4xx_hal_tim_ex.o"
+"dynamixel_no_ttl\stm32f4xx_hal_uart.o"
+"dynamixel_no_ttl\stm32f4xx_hal_rcc.o"
+"dynamixel_no_ttl\stm32f4xx_hal_rcc_ex.o"
+"dynamixel_no_ttl\stm32f4xx_hal_flash.o"
+"dynamixel_no_ttl\stm32f4xx_hal_flash_ex.o"
+"dynamixel_no_ttl\stm32f4xx_hal_flash_ramfunc.o"
+"dynamixel_no_ttl\stm32f4xx_hal_gpio.o"
+"dynamixel_no_ttl\stm32f4xx_hal_dma_ex.o"
+"dynamixel_no_ttl\stm32f4xx_hal_dma.o"
+"dynamixel_no_ttl\stm32f4xx_hal_pwr.o"
+"dynamixel_no_ttl\stm32f4xx_hal_pwr_ex.o"
+"dynamixel_no_ttl\stm32f4xx_hal_cortex.o"
+"dynamixel_no_ttl\stm32f4xx_hal.o"
+"dynamixel_no_ttl\stm32f4xx_hal_exti.o"
+"dynamixel_no_ttl\system_stm32f4xx.o"
+--strict --scatter "Dynamixel_NO_TTL\Dynamixel_NO_TTL.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Dynamixel_NO_TTL.map" -o Dynamixel_NO_TTL\Dynamixel_NO_TTL.axf
