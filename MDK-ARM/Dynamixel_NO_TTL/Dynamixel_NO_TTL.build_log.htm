@@ -22,29 +22,19 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 D:\STM32\New Academy\Dynamixel_NO_TTL\MDK-ARM\Dynamixel_NO_TTL.uvprojx
-Project File Date:  03/09/2023
+Project File Date:  03/10/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Dynamixel_NO_TTL'
 compiling main.c...
-../Core/Src/main.c(92): warning:  #177-D: variable "setID"  was declared but never referenced
-  	uint8_t setID[8] = {0xFF, 0xFF, 0xFE, 0x04, 0x03, 0x03, 0x13,0xE4};
-../Core/Src/main.c(93): warning:  #177-D: variable "readTemp"  was declared but never referenced
-  	uint8_t readTemp[8] = {0xFF, 0xFF, 0x01, 0x04, 0x02, 0x2B, 0x01, 0xCC}; // 7 byte feedback
-../Core/Src/main.c(94): warning:  #177-D: variable "ping_ID_1"  was declared but never referenced
-  	uint8_t ping_ID_1[6] = {0xFF, 0xFF, 0x01, 0x02, 0x01, 0xFB}; // 6 byte feedback
-../Core/Src/main.c(95): warning:  #177-D: variable "ping_broadcast"  was declared but never referenced
-  	uint8_t ping_broadcast[6] = {0xFF, 0xFF, 0xFE, 0x02, 0x01, 0xFE}; // 6 byte feedback
-../Core/Src/main.c(96): warning:  #177-D: variable "LED_and_move"  was declared but never referenced
-  	uint8_t LED_and_move[9] = {0xFF, 0xFF, 0x13, 0x05, 0x03, 0x18, 0x01, 0x01, 0xCA}; // 6 byte feedback
-../Core/Src/main.c(97): warning:  #177-D: variable "LED_and_move_broadcast"  was declared but never referenced
-  	uint8_t LED_and_move_broadcast[9] = {0xFF, 0xFF, 0xFE, 0x05, 0x03, 0x18, 0x01, 0x01, 0xDF}; // 6 byte feedback
-../Core/Src/main.c: 6 warnings, 0 errors
+..\..\Dynamixel_NO_TTL\Dynamixel.h(51): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Src/main.c: 1 warning, 0 errors
 linking...
-Program Size: Code=4298 RO-data=450 RW-data=24 ZI-data=1704  
+Program Size: Code=4394 RO-data=450 RW-data=20 ZI-data=1724  
 FromELF: creating hex file...
-"Dynamixel_NO_TTL\Dynamixel_NO_TTL.axf" - 0 Error(s), 6 Warning(s).
+"Dynamixel_NO_TTL\Dynamixel_NO_TTL.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -68,7 +58,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

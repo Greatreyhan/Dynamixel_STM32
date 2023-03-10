@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "Dynamixel.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,6 +56,8 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint8_t fdbck[6];
+uint8_t chksm;
+dynamixel_t ax;
 /* USER CODE END 0 */
 
 /**
@@ -88,29 +90,15 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-	/******************* TEST COMMAND *********************/
-	uint8_t setID[8] = {0xFF, 0xFF, 0xFE, 0x04, 0x03, 0x03, 0x13,0xE4};
-	uint8_t readTemp[8] = {0xFF, 0xFF, 0x01, 0x04, 0x02, 0x2B, 0x01, 0xCC}; // 7 byte feedback
-	uint8_t ping_ID_1[6] = {0xFF, 0xFF, 0x01, 0x02, 0x01, 0xFB}; // 6 byte feedback
-	uint8_t ping_broadcast[6] = {0xFF, 0xFF, 0xFE, 0x02, 0x01, 0xFE}; // 6 byte feedback
-	uint8_t LED_and_move[9] = {0xFF, 0xFF, 0x13, 0x05, 0x03, 0x18, 0x01, 0x01, 0xCA}; // 6 byte feedback
-	uint8_t LED_and_move_broadcast[9] = {0xFF, 0xFF, 0xFE, 0x05, 0x03, 0x18, 0x01, 0x01, 0xDF}; // 6 byte feedback
-	uint8_t move_to[11] = {0xFF, 0xFF, 0x13, 0x07, 0x03, 0x1E, 0x00, 0x02, 0x00, 0x02, 0xC0};
-	
-	/******************* TRANSMIT DATA ********************/
-	HAL_HalfDuplex_EnableTransmitter(&huart2);
-//	HAL_UART_Transmit(&huart2, setID, 8, 10);
-	HAL_UART_Transmit(&huart2, move_to, 11, 10);
-	
+	dyna_init(&huart2, &ax, 0x13);
+	dyna_ping(&ax);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		/******************* RECEIVE DATA *********************/
-		HAL_HalfDuplex_EnableReceiver(&huart2);
-		HAL_UART_Receive(&huart2, fdbck, 6, 10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

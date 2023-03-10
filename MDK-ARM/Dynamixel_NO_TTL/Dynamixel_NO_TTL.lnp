@@ -3,6 +3,7 @@
 "dynamixel_no_ttl\main.o"
 "dynamixel_no_ttl\stm32f4xx_it.o"
 "dynamixel_no_ttl\stm32f4xx_hal_msp.o"
+"dynamixel_no_ttl\dynamixel.o"
 "dynamixel_no_ttl\stm32f4xx_hal_tim.o"
 "dynamixel_no_ttl\stm32f4xx_hal_tim_ex.o"
 "dynamixel_no_ttl\stm32f4xx_hal_uart.o"
