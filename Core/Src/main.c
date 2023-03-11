@@ -58,6 +58,7 @@ static void MX_USART2_UART_Init(void);
 uint8_t fdbck[6];
 uint8_t chksm;
 dynamixel_t ax;
+uint8_t temp;
 /* USER CODE END 0 */
 
 /**
@@ -90,8 +91,18 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-	dyna_init(&huart2, &ax, 0x13);
-	dyna_ping(&ax);
+	dyna_init(&huart2, &ax, 0x11);
+	dyna_set_limit_CW(&ax, 0x0000);
+	dyna_set_limit_CCW(&ax, 0x03FF);
+	dyna_set_torque_enabler(&ax, TORQUE_ON);
+	dyna_set_goal_position(&ax, 0x0008);
+	dyna_set_moving_speed(&ax, 0x0300, MOVING_CW);
+	HAL_Delay(1000);
+	dyna_set_goal_position(&ax, 0x0020);
+	HAL_Delay(1000);
+	dyna_set_goal_position(&ax, 0x0030);
+	HAL_Delay(1000);
+	dyna_set_goal_position(&ax, 0x0040);
 
   /* USER CODE END 2 */
 

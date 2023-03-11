@@ -68,22 +68,22 @@ void dyna_set_bautrate(dynamixel_t* dyn, uint8_t speed){
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
 
-void dyna_set_angle_CW(dynamixel_t* dyn, uint16_t angle){
-	uint8_t angleMsg[10] = {0xFF, 0xFF, dyn->id, 0x06, 0x03, 0x06, (angle & 0xFF), 0x07, ((angle >> 8) & 0xFF), 0x00};
-	uint8_t chk = checksum_generator(angleMsg, 10);	
-	angleMsg[9] = chk;
+void dyna_set_limit_CW(dynamixel_t* dyn, uint16_t angle){
+	uint8_t angleMsg[9] = {0xFF, 0xFF, dyn->id, 0x05, 0x03, 0x06, (angle & 0xFF),((angle >> 8) & 0xFF), 0x00};
+	uint8_t chk = checksum_generator(angleMsg, 9);	
+	angleMsg[8] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, angleMsg, 10, 10);
+	HAL_UART_Transmit(huart, angleMsg, 9, 10);
 	HAL_HalfDuplex_EnableReceiver(huart);
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
 
-void dyna_set_angle_CCW(dynamixel_t* dyn, uint16_t angle){
-	uint8_t angleMsg[10] = {0xFF, 0xFF, dyn->id, 0x06, 0x03, 0x08, (angle & 0xFF), 0x09, ((angle >> 8) & 0xFF), 0x00};
-	uint8_t chk = checksum_generator(angleMsg, 10);	
-	angleMsg[9] = chk;
+void dyna_set_limit_CCW(dynamixel_t* dyn, uint16_t angle){
+	uint8_t angleMsg[9] = {0xFF, 0xFF, dyn->id, 0x05, 0x03, 0x08, (angle & 0xFF), ((angle >> 8) & 0xFF), 0x00};
+	uint8_t chk = checksum_generator(angleMsg, 9);	
+	angleMsg[8] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, angleMsg, 10, 10);
+	HAL_UART_Transmit(huart, angleMsg, 9, 10);
 	HAL_HalfDuplex_EnableReceiver(huart);
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
@@ -108,12 +108,12 @@ void dyna_set_torque_value(dynamixel_t* dyn, uint16_t torq){
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
 
-void dyna_set_torque(dynamixel_t* dyn, dynamixel_torque_t condition){
-	uint8_t torque[8] = {0xFF, 0xFF, dyn->id, 0x04, 0x03, 0x18, condition, 0x00};
-	uint8_t chk = checksum_generator(torque, 8);
-	torque[7] = chk;
+void dyna_set_torque_enabler(dynamixel_t* dyn, dynamixel_torque_t condition){
+	uint8_t torque[9] = {0xFF, 0xFF, dyn->id, 0x05, 0x03, 0x18, condition, 0x01, 0x00};
+	uint8_t chk = checksum_generator(torque, 9);
+	torque[8] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, torque, 8, 10);
+	HAL_UART_Transmit(huart, torque, 9, 10);
 	HAL_HalfDuplex_EnableReceiver(huart);
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
@@ -169,33 +169,56 @@ void dyna_set_slope_CCW(dynamixel_t* dyn, uint8_t margin){
 }
 
 void dyna_set_goal_position(dynamixel_t* dyn, uint16_t goal){
-	uint8_t pos[10] = {0xFF, 0xFF, dyn->id, 0x06, 0x03, 0x1E, (goal & 0xFF), 0x1F, ((goal >> 8) & 0xFF), 0x00};
-	uint8_t chk = checksum_generator(pos, 10);	
-	pos[9] = chk;
+	uint8_t pos[9] = {0xFF, 0xFF, dyn->id, 0x05, 0x03, 0x1E, (goal & 0xFF), ((goal >> 8) & 0xFF), 0x00};
+	uint8_t chk = checksum_generator(pos, 9);	
+	pos[8] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, pos, 10, 10);
+	HAL_UART_Transmit(huart, pos, 9, 10);
 	HAL_HalfDuplex_EnableReceiver(huart);
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
 
-void dyna_set_moving_speed(dynamixel_t* dyn, uint16_t speed){
-	uint8_t spd[10] = {0xFF, 0xFF, dyn->id, 0x06, 0x03, 0x20, (speed & 0xFF), 0x21, ((speed >> 8) & 0xFF), 0x00};
-	uint8_t chk = checksum_generator(spd, 10);	
-	spd[9] = chk;
+void dyna_set_moving_speed(dynamixel_t* dyn, uint16_t speed, dynamixel_direction_t dir){
+	uint8_t par = ((speed >> 8) & 0xFF);
+	if(dir == MOVING_CW) par |= 0x04;
+	uint8_t spd[9] = {0xFF, 0xFF, dyn->id, 0x05, 0x03, 0x20, (speed & 0xFF), par, 0x00};
+	uint8_t chk = checksum_generator(spd, 9);	
+	spd[8] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, spd, 10, 10);
+	HAL_UART_Transmit(huart, spd, 9, 10);
+	HAL_HalfDuplex_EnableReceiver(huart);
+	HAL_UART_Receive(huart, rx_buf, 6, 10);
+}
+
+void dyna_test(void){
+//	uint8_t limt[9] = {0xFF, 0xFF, 0x13, 0x05, 0x03, 0x08, 0xFF, 0x03, 0xDA};
+	uint8_t enable[9] = {0xFF, 0xFF, 0x11, 0x05, 0x03, 0x18, 0x01, 0x01, 0xCC};
+	uint8_t move_to[9] = {0xFF, 0xFF, 0x11, 0x05, 0x03, 0x1E, 0x00, 0x02, 0xC6};
+	uint8_t speed[9] = {0xFF, 0xFF, 0x11, 0x05, 0x03, 0x20, 0x00, 0x02, 0xC4};
+	HAL_HalfDuplex_EnableTransmitter(huart);
+	HAL_UART_Transmit(huart, enable, 9, 10);
+	HAL_HalfDuplex_EnableReceiver(huart);
+	HAL_UART_Receive(huart, rx_buf, 6, 10);
+	
+	HAL_HalfDuplex_EnableTransmitter(huart);
+	HAL_UART_Transmit(huart, move_to, 9, 10);
+	HAL_HalfDuplex_EnableReceiver(huart);
+	HAL_UART_Receive(huart, rx_buf, 6, 10);
+	
+	HAL_HalfDuplex_EnableTransmitter(huart);
+	HAL_UART_Transmit(huart, speed, 9, 10);
 	HAL_HalfDuplex_EnableReceiver(huart);
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
 
 uint8_t dyna_temperature(dynamixel_t* dyn){
-	uint8_t readTemp[8] = {0xFF, 0xFF, dyn->id, 0x04, 0x02, 0x2B, 0x01, 0x00};
+	uint8_t readTemp[8] = {0xFF, 0xFF, 0x11, 0x04, 0x02, 0x2B, 0x01, 0xBC};
 	uint8_t chk = checksum_generator(readTemp, 8);
 	readTemp[7] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
 	HAL_UART_Transmit(huart, readTemp, 8, 10);
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
-	return rx_buf[5];
+	memcpy(dyn->rx_buf, rx_buf, 7);
 }
 
 uint8_t checksum_generator(uint8_t* msg, uint8_t len){
