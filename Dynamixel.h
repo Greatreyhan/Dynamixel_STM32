@@ -53,7 +53,7 @@ uint8_t checksum_generator(uint8_t* msg, uint8_t len);
 void dyna_set_id(dynamixel_t* dyn, uint8_t new_id);
 void dyna_set_limit_CW(dynamixel_t* dyn, uint16_t angle);
 void dyna_set_limit_CCW(dynamixel_t* dyn, uint16_t angle);
-void dyna_test(void);
+uint8_t dyna_read_posisition(dynamixel_t* dyn);
 
 // Error
 uint8_t dyna_temperature(dynamixel_t* dyn);

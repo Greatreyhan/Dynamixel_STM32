@@ -190,35 +190,27 @@ void dyna_set_moving_speed(dynamixel_t* dyn, uint16_t speed, dynamixel_direction
 	HAL_UART_Receive(huart, rx_buf, 6, 10);
 }
 
-void dyna_test(void){
-//	uint8_t limt[9] = {0xFF, 0xFF, 0x13, 0x05, 0x03, 0x08, 0xFF, 0x03, 0xDA};
-	uint8_t enable[9] = {0xFF, 0xFF, 0x11, 0x05, 0x03, 0x18, 0x01, 0x01, 0xCC};
-	uint8_t move_to[9] = {0xFF, 0xFF, 0x11, 0x05, 0x03, 0x1E, 0x00, 0x02, 0xC6};
-	uint8_t speed[9] = {0xFF, 0xFF, 0x11, 0x05, 0x03, 0x20, 0x00, 0x02, 0xC4};
-	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, enable, 9, 10);
-	HAL_HalfDuplex_EnableReceiver(huart);
-	HAL_UART_Receive(huart, rx_buf, 6, 10);
-	
-	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, move_to, 9, 10);
-	HAL_HalfDuplex_EnableReceiver(huart);
-	HAL_UART_Receive(huart, rx_buf, 6, 10);
-	
-	HAL_HalfDuplex_EnableTransmitter(huart);
-	HAL_UART_Transmit(huart, speed, 9, 10);
-	HAL_HalfDuplex_EnableReceiver(huart);
-	HAL_UART_Receive(huart, rx_buf, 6, 10);
-}
-
 uint8_t dyna_temperature(dynamixel_t* dyn){
-	uint8_t readTemp[8] = {0xFF, 0xFF, 0x11, 0x04, 0x02, 0x2B, 0x01, 0xBC};
+	uint8_t readTemp[8] = {0xFF, 0xFF, dyn->id, 0x04, 0x02, 0x2B, 0x01, 0x00};
 	uint8_t chk = checksum_generator(readTemp, 8);
 	readTemp[7] = chk;
 	HAL_HalfDuplex_EnableTransmitter(huart);
 	HAL_UART_Transmit(huart, readTemp, 8, 10);
-	HAL_UART_Receive(huart, rx_buf, 6, 10);
+	HAL_HalfDuplex_EnableReceiver(huart);
+	HAL_UART_Receive(huart, rx_buf, 7, 10);
 	memcpy(dyn->rx_buf, rx_buf, 7);
+}
+
+uint8_t dyna_read_posisition(dynamixel_t* dyn){
+	uint8_t pos[8] = {0xFF, 0xFF, dyn->id, 0x04, 0x02, 0X24, 0x01, 0x00};
+	uint8_t chk = checksum_generator(pos, 8);
+	pos[7] = chk;
+	HAL_HalfDuplex_EnableTransmitter(huart);
+	HAL_UART_Transmit(huart, pos, 8, 10);
+	HAL_HalfDuplex_EnableReceiver(huart);
+	HAL_UART_Receive(huart, rx_buf, 8, 10);
+	memcpy(dyn->rx_buf, rx_buf, 8);
+	return rx_buf[2];
 }
 
 uint8_t checksum_generator(uint8_t* msg, uint8_t len){

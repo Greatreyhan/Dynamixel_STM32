@@ -1,7 +1,7 @@
 Dependencies for Project 'Dynamixel_NO_TTL', Target 'Dynamixel_NO_TTL': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
 F (startup_stm32f407xx.s)(0x64093D46)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 535" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f407xx.lst --xref -o dynamixel_no_ttl\startup_stm32f407xx.o --depend dynamixel_no_ttl\startup_stm32f407xx.d)
-F (../Core/Src/main.c)(0x640BC789)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\..\Dynamixel_NO_TTL-I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o dynamixel_no_ttl\main.o --omf_browse dynamixel_no_ttl\main.crf --depend dynamixel_no_ttl\main.d)
+F (../Core/Src/main.c)(0x640D921E)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\..\Dynamixel_NO_TTL-I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o dynamixel_no_ttl\main.o --omf_browse dynamixel_no_ttl\main.crf --depend dynamixel_no_ttl\main.d)
 I (../Core/Inc/main.h)(0x64093D3E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x62DE692D)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x64093D3E)
@@ -31,7 +31,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x62DE692D
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x62DE692D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x62DE692D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x62DE692D)
-I (..\..\Dynamixel_NO_TTL\Dynamixel.h)(0x640BC543)
+I (..\..\Dynamixel_NO_TTL\Dynamixel.h)(0x640D9047)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025318E)
 F (../Core/Src/stm32f4xx_it.c)(0x64093D3D)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\..\Dynamixel_NO_TTL-I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o dynamixel_no_ttl\stm32f4xx_it.o --omf_browse dynamixel_no_ttl\stm32f4xx_it.crf --depend dynamixel_no_ttl\stm32f4xx_it.d)
 I (../Core/Inc/main.h)(0x64093D3E)
@@ -94,8 +94,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x62DE692D
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x62DE692D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x62DE692D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x62DE692D)
-F (..\Dynamixel.c)(0x640BC6DB)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\..\Dynamixel_NO_TTL-I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o dynamixel_no_ttl\dynamixel.o --omf_browse dynamixel_no_ttl\dynamixel.crf --depend dynamixel_no_ttl\dynamixel.d)
-I (..\Dynamixel.h)(0x640BC543)
+F (..\Dynamixel.c)(0x640D955B)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\..\Dynamixel_NO_TTL-I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o dynamixel_no_ttl\dynamixel.o --omf_browse dynamixel_no_ttl\dynamixel.crf --depend dynamixel_no_ttl\dynamixel.d)
+I (..\Dynamixel.h)(0x640D9047)
 I (../Core/Inc/main.h)(0x64093D3E)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x62DE692D)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x64093D3E)
@@ -126,7 +126,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x62DE692D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x62DE692D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x62DE692D)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025318E)
-F (..\Dynamixel.h)(0x640BC543)()
+F (..\Dynamixel.h)(0x640D9047)()
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c)(0x62DE692E)(--c99 -c --cpu Cortex-M4.fp.sp -D__EVAL -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\..\Dynamixel_NO_TTL-I.\RTE\_Dynamixel_NO_TTL-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\greatreyhan\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o dynamixel_no_ttl\stm32f4xx_hal_tim.o --omf_browse dynamixel_no_ttl\stm32f4xx_hal_tim.crf --depend dynamixel_no_ttl\stm32f4xx_hal_tim.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x62DE692D)
 I (../Core/Inc/stm32f4xx_hal_conf.h)(0x64093D3E)
